@@ -63,9 +63,9 @@ const loginOrRegister = async (req, res, next) => {
     if (existingUser) {
       return res.status(201).json({
         success: true,
-        message: "User exist",
         exist: true,
-        OTP,
+        message: "User exist",
+        OTP: OTP,
       });
     }
 
@@ -146,6 +146,8 @@ const register = async (req, res, next) => {
 
 /*======================Sign-In======================*/
 const login = async (req, res, next) => {
+  console.log(`Login called from backend`);
+
   try {
     const validationRules = [
       check("phone").isMobilePhone().withMessage("Invalid phone number"),

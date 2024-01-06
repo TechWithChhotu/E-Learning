@@ -2,8 +2,13 @@ import TextTyping from "../TextTyping";
 import HomeStudy from "../../assets/hero-bg.png";
 import HomeStudyEffect from "../../assets/hero-shadow.png";
 import CounterDown from "./CounterDown";
+import ".././CommenCSS.css";
+import PopularCourses from "../courses/PopularCourses";
 
 function Home() {
+  // const Storeres = useSelector((state) => state.recordSlice.workRecords) || {};
+  // const [data, setdata] = useState(Storeres);
+
   return (
     <div className="grid grid-cols-2 gap-8 px-24 py-10">
       <div className="flex flex-col justify-center gap-5">
@@ -29,6 +34,16 @@ function Home() {
       </div>
       <div className="col-span-2">
         <CounterDown />
+      </div>
+
+      <div className="col-span-2 flex flex-col items-center">
+        <h6 className="section-title bg-white w-fit text-center px-3 mt-5">
+          Courses
+        </h6>
+        <h2 className="text-[2rem] font-bold text-gray-600 mb-5">
+          Our Popular Courses
+        </h2>
+        <PopularCourses />
       </div>
     </div>
   );
