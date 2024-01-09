@@ -11,7 +11,6 @@ function classNames(...classes) {
 
 function Header() {
   const login = useSelector((state) => state.userSlice.login);
-  alert(`${login}`);
   return (
     <div className="flex justify-around items-center h-16  px-16">
       <div className="flex items-center gap-x-2">

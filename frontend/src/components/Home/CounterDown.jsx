@@ -3,6 +3,7 @@ import CountUp from "react-countup";
 import student_iocn from "../../assets/student-iocn.svg";
 import credit_card_icon from "../../assets/credit-card-icon.svg";
 import books_icon from "../../assets/books-icon.svg";
+import { useEffect } from "react";
 
 const counterDownData = [
   { id: 1, endingValue: 15, text: "Different Courses", icon: books_icon },
@@ -16,6 +17,13 @@ const counterDownData = [
 ];
 
 function CounterDown() {
+  useEffect(() => {
+    console.log(`Hello there`);
+    const res = () => {
+      console.log("Hello");
+    };
+    res();
+  }, []);
   return (
     <div className="flex justify-around">
       {counterDownData.map((e) => (

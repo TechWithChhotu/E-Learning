@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { UserIcon } from "@heroicons/react/24/outline";
+import PropTypes from "prop-types";
 
 function CourseCard({ course }) {
   return (
@@ -17,10 +18,19 @@ function CourseCard({ course }) {
           {course.description}
         </p>
         <p>
-          <span className="text-green-600 font-semibold text-lg">Free </span>{" "}
-          <span className="line-through">899</span>
+          <span className="text-green-600 font-semibold text-lg">
+            {course.discount == 100
+              ? "Free"
+              : Math.round(
+                  course.price - (course.price * course.discount) / 100
+                )}
+          </span>{" "}
+          <span className="line-through">{course.price}</span>
           &nbsp; | early Offer{" "}
-          <span className="text-green-600 font-semibold text-lg">100%</span> off
+          <span className="text-green-600 font-semibold text-lg">
+            {course.discount}%
+          </span>{" "}
+          off
         </p>
         <p>
           <UserIcon className="h-5 inline" /> {course.createdBy}
@@ -34,7 +44,7 @@ function CourseCard({ course }) {
           Explore
         </Link>
         <Link
-          to=""
+          to="signed/user/course/payment"
           className="bg-orange-500 hover:bg-orange-600 text-center py-2 text-white"
         >
           Enroll Now
@@ -43,5 +53,14 @@ function CourseCard({ course }) {
     </div>
   );
 }
-
+CourseCard.propTypes = {
+  course: PropTypes.shape({
+    thumbnail: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    discount: PropTypes.number.isRequired,
+    createdBy: PropTypes.string.isRequired,
+  }).isRequired,
+};
 export default CourseCard;
