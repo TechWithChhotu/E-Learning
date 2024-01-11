@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
-// import { UserIcon } from "@heroicons/react/24/outline";
-import PropTypes from "prop-types";
+import { FaIndianRupeeSign } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -14,14 +13,6 @@ function CheckOut() {
   const [course, setCourse] = useState({});
 
   useEffect(() => {
-    const style = document.createElement("style");
-    style.textContent = `
-          #razorpay-payment-modal .modal-content {
-              height: 500px !important; /* Adjust as needed */
-          }
-      `;
-    document.head.appendChild(style);
-
     const result = data ? data.find((e) => e._id == id) : "";
     setCourse(result);
     setTotalPrice(
@@ -107,19 +98,25 @@ function CheckOut() {
 
         <div className="px-10 grid gap-y-2">
           <p className="flex justify-between text-sm">
-            <span>Subtotal:</span> <span>{course.price}</span>
+            <span>Subtotal:</span>{" "}
+            <span>
+              <FaIndianRupeeSign className="inline-block" />
+              {course.price}.00
+            </span>
           </p>
           <p className="flex justify-between text-sm">
             <span>Discount:</span>
             <span className="text-green-600 font-semibold ">
-              {Math.round((course.price * course.discount) / 100)}
+              <FaIndianRupeeSign className="inline-block" />
+              {Math.round((course.price * course.discount) / 100)}.00
             </span>
           </p>
           <p className="border"></p>
           <p className="flex justify-between text-sm">
             <span>Total:</span>
             <span className="">
-              {course.discount == 100 ? "Free" : totalPrice}
+              <FaIndianRupeeSign className="inline-block" />{" "}
+              {course.discount == 100 ? "Free" : totalPrice}.00
             </span>{" "}
           </p>
         </div>
@@ -138,15 +135,5 @@ function CheckOut() {
     </div>
   );
 }
-CheckOut.propTypes = {
-  course: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    thumbnail: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    discount: PropTypes.number.isRequired,
-    createdBy: PropTypes.string.isRequired,
-  }).isRequired,
-};
+
 export default CheckOut;

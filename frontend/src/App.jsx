@@ -15,6 +15,8 @@ import {
 import Login from "./components/auth/Login";
 import CourseDetails from "./components/courses/CourseDetails";
 import CheckOut from "./components/courses/CheckOut";
+import NotFound from "./components/notFound/NotFound";
+import ContactSupport from "./components/ContactSupport";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,8 +25,10 @@ const router = createBrowserRouter(
       <Route path="sign-in" element={<Login />}></Route>
       <Route path="course/:id/checkout" element={<CheckOut />}></Route>
       <Route path="course/:id" element={<CourseDetails />}></Route>
-
       <Route path="payment" element={<Payment />}></Route>
+      <Route path="contact-us" element={<ContactSupport />}></Route>
+
+      <Route path="*" element={<NotFound />}></Route>
     </Route>
   )
 );
