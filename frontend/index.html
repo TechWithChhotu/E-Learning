@@ -9,6 +9,29 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn Online</title>
+    <script>
+      // ... other JavaScript code
+
+      var style = document.createElement("style");
+      style.textContent = `
+          #razorpay-payment-modal .modal-content {
+              height: 200px !important; /* Adjust as needed */
+          }
+      `;
+      document.head.appendChild(style);
+    </script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+      // ... other JavaScript code
+
+      var style = document.createElement("style");
+      style.textContent = `
+          #razorpay-payment-modal .modal-content {
+              height: 200px !important; /* Adjust as needed */
+          }
+      `;
+      document.head.appendChild(style);
+    </script>
   </head>
   <body>
     <div id="root"></div>

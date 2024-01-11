@@ -4,6 +4,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 
 import { setCourses } from "./stores/user.slice";
+import Payment from "./components/payment/Payment";
 
 import {
   createBrowserRouter,
@@ -12,12 +13,18 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Login from "./components/auth/Login";
+import CourseDetails from "./components/courses/CourseDetails";
+import CheckOut from "./components/courses/CheckOut";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="" element={<Layout />}>
       <Route path="" element={<Home />}></Route>
       <Route path="sign-in" element={<Login />}></Route>
+      <Route path="course/:id/checkout" element={<CheckOut />}></Route>
+      <Route path="course/:id" element={<CourseDetails />}></Route>
+
+      <Route path="payment" element={<Payment />}></Route>
     </Route>
   )
 );

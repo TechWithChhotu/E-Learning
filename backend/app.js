@@ -10,6 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
+
 app.use("/api/v1/user/", userRoute);
 app.use("/api/v1/course/", courseRoute);
 app.use("/api/v1/payment/", paymentRoute);

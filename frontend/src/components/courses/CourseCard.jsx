@@ -44,7 +44,7 @@ function CourseCard({ course }) {
           Explore
         </Link>
         <Link
-          to="signed/user/course/payment"
+          to={`/course/${course._id}/checkout`}
           className="bg-orange-500 hover:bg-orange-600 text-center py-2 text-white"
         >
           Enroll Now
@@ -55,6 +55,7 @@ function CourseCard({ course }) {
 }
 CourseCard.propTypes = {
   course: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     thumbnail: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
